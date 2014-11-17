@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 import me.ramuta.mycanvasapp.app.R;
 
+import java.util.Random;
+
 public class Simple2Activity extends Activity {
     private static final String TAG = "Simple2Activity";
     private LinearLayout linlay;
@@ -34,10 +36,38 @@ public class Simple2Activity extends Activity {
         canvas.drawBitmap(rFlat, 10f, 10f, null);
         //canvas.drawBitmap(flat, 10f, 10f, null);
 
-        // rectangle
-        Paint paint = new Paint();
-        paint.setColor(Color.GREEN);
-        canvas.drawRect(50, 50, 200, 200, paint);
+        // red
+        Paint redPaint = new Paint();
+        //redPaint.setColor(Color.GREEN);
+        //int [] mColors = new int[]{0xFFFF0000,0xFFFF00FF,0xFF0000FF,0xFF00FFFF,0xFF00FF00,0xFF000000,0xFFFFFFFF,0xFFFFFF00,0xFFFF0000};
+        redPaint.setShader(
+                //new LinearGradient(0, 0, 0, 50, Color.RED, Color.GREEN, Shader.TileMode.MIRROR)
+                //new SweepGradient(0,0,mColors,null)
+                new RadialGradient(0, 0, 20, Color.RED, Color.MAGENTA, Shader.TileMode.MIRROR)
+        );
+        //canvas.drawRect(50, 50, 200, 200, redPaint);
+        canvas.drawCircle(90, 50, 20, redPaint);
+
+
+        // painting 1
+        for(int p=0; p < 20; p++) {
+            Paint painting = new Paint();
+            painting.setColor(Color.GREEN+(p*5));
+            canvas.drawCircle(90+(p*3), 150+(p*2), 5+p, painting);
+        }
+
+        int [] mColors = new int[]{0xFFFF0000,0xFFFF00FF,0xFF0000FF,0xFF00FFFF,0xFF00FF00,0xFF000000,0xFFFFFFFF,0xFFFFFF00,0xFFFF0000};
+        int p2 = 0;
+        for(int color : mColors) {
+            Paint painting = new Paint();
+            painting.setColor(color);
+            Random rand = new Random();
+            int n1 = rand.nextInt(50)-50;  // x distance
+            int n2 = rand.nextInt(50)-50;  // y distance
+            int n3 = rand.nextInt(15)+10;  // radius
+            canvas.drawCircle(110+n1, 250+n2, n3, painting);
+            p2++;
+        }
 
         // draw everything into linear layout
         linlay.setBackground(new BitmapDrawable(getResources(), bg));
