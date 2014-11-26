@@ -32,6 +32,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="me.ramuta.mycanvasapp.app.MainActivity" />
         </activity>
+        <activity
+            android:name="me.ramuta.mycanvasapp.app.triangles.TriangleActivity"
+            android:label="@string/title_activity_triangle"
+            android:parentActivityName="me.ramuta.mycanvasapp.app.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="me.ramuta.mycanvasapp.app.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import me.ramuta.mycanvasapp.app.simple.Simple2Activity;
 import me.ramuta.mycanvasapp.app.simple.SimpleActivity;
+import me.ramuta.mycanvasapp.app.triangles.TriangleActivity;
 
 
 public class MainActivity extends Activity {
@@ -16,6 +17,7 @@ public class MainActivity extends Activity {
 
     private Button simpleButton;
     private Button simple2Button;
+    private Button triangleButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,15 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Simple2Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        triangleButton = (Button) findViewById(R.id.mainTriangleButton);
+        triangleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, TriangleActivity.class);
                 startActivity(intent);
             }
         });
